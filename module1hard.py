@@ -12,7 +12,7 @@ for i in range(99):
  average=round(average,2)
  journal.update({student_name: average})
  print('Средний балл: ',average)
- if input('Продолжить?[да/нет] ') == 'нет':
+ if input('Продолжить?[y/n] ') == 'n':
      break
  else:
      continue
