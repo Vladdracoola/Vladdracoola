@@ -21,7 +21,7 @@ def function_main(*args):
 
 
 print(function_main(
-  *[[1, 2, 3],
+  [[1, 2, 3],
   {'a': 4, 'b': 5},
   (6, {'cube': 7, 'drum': 8}),
   "Hello",
