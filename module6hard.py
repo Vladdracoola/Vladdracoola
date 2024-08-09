@@ -49,11 +49,11 @@ class Circle(Figure):
     sides_count = 1
     def __init__(self, __color, __sides):
         super().__init__(__color, __sides)
-        self.radius = self.get_sides()[0]
+        self.radius = self.get_sides()[0] / (2 * math.pi)
 
     def set_sides(self, *new_sides):
         super().set_sides(*new_sides)
-        return  self.radius / 2 * 3.14
+        self.radius = self.get_sides()[0] / (2 * math.pi)
 
 
 class Triangle(Figure):
