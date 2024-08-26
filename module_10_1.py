@@ -1,5 +1,6 @@
 import time
 from time import sleep
+from datetime import timedelta
 from threading import Thread
 
 
@@ -21,7 +22,8 @@ write_words(200, 'example3.txt')
 write_words(100, 'example4.txt')
 
 global_end = time.time()
-print(f'Время записи всех файлов составило: {round(global_end - global_start, 2)} сек')
+global_result = timedelta(seconds=global_end - global_start)
+print(f'Время записи всех файлов составило: {global_result}')
 
 stream_start = time.time()
 
@@ -41,4 +43,5 @@ stream_3.join()
 stream_4.join()
 
 stream_end = time.time()
-print(f'Время потоковой записи всех файлов составило: {round(stream_end - stream_start, 2)} сек')
+stream_time = timedelta(seconds=stream_end - stream_start)
+print(f'Время потоковой записи всех файлов составило: {stream_time}')
