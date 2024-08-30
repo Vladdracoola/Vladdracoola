@@ -1,5 +1,5 @@
 import time
-from threading import Thread
+from threading import Thread, Lock
 
 
 class Knight(Thread):
@@ -14,13 +14,16 @@ class Knight(Thread):
         print(f'{self.name}, На нас напали!')
         while self.enemy_power > 0:
             days += 1
-            self.enemy_power -= self.power
-            print(f'{self.name}, сражается {days} дней, осталось противников: {self.enemy_power}' + '\n')
-            time.sleep(1)
+            if self.enemy_power <= self.power:
+                self.enemy_power = 0
+            else:
+                self.enemy_power -= self.power
+                print(f'{self.name}, сражается {days} дней, осталось противников: {self.enemy_power}' + '\n')
+                time.sleep(1)
         print(f'{self.name}, одержал победу спустя {days} дней! За Oрду!!!' + '\n')
 
 
-first_knight = Knight('Sir Durotan', 10)
+first_knight = Knight('Sir Durotan', 45)
 second_knight = Knight("Sir Thrall", 20)
 
 first_knight.start()
