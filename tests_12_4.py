@@ -1,5 +1,4 @@
 import logging
-import traceback
 import unittest
 import module_12_4_task
 
@@ -16,7 +15,7 @@ class RunnerTest(unittest.TestCase):
             self.assertEqual(mr_walker.distance, 50)
             logging.info('"test_walk" выполнен успешно')
         except Exception as e:
-            logging.warning(f"Неверная скорость для Runner {e}, {traceback.print_exc()}")
+            logging.warning(f"Неверная скорость для Runner {e}")
 
     def test_run(self):
         try:
@@ -26,7 +25,7 @@ class RunnerTest(unittest.TestCase):
             self.assertEqual(mr_runner.distance, 100)
             logging.info('"test_run" выполнен успешно')
         except Exception as e:
-            logging.warning(f"Неверный тип данных для объекта Runner {e}, {traceback.print_exc()}")
+            logging.warning(f"Неверный тип данных для объекта Runner {e}")
 
 
 if __name__ == '__main__':
