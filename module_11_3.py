@@ -1,13 +1,14 @@
 from pprint import pprint
+import sys
 
 
 def introspection_info(obj):
     return {
         'type': type(obj).__name__,
-        'attributes': dir(obj),
+        'attributes': [attr for attr in dir(obj) if callable(getattr(obj, attr))],
         'methods': [attr for attr in dir(obj) if callable(getattr(obj, attr)) and not attr.startswith('__')],
-        'module': getattr(obj, '__module__', 'No module'),
-        'size': obj.__sizeof__() if hasattr(obj, '__sizeof__') else 'Метод __sizeof__ отсутствует',
+        'module': obj.__class__.__module__,
+        'size': sys.getsizeof(obj) if hasattr(obj, 'sizeof') else 'No sizeof method',
         'value': getattr(obj, 'value', 'No value attribute')
     }
 
