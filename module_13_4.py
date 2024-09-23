@@ -5,7 +5,7 @@ from aiogram.fsm.state import State, StatesGroup
 from aiogram.filters import Filter
 import asyncio
 
-api = '7499425950:AAFf4rko4fqZdXYn-ubk6fJaCPYbDMj6Yfc'
+api = ''
 
 
 class TextFilter(Filter):
