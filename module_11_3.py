@@ -5,7 +5,7 @@ import sys
 def introspection_info(obj):
     return {
         'type': type(obj).__name__,
-        'attributes': [attr for attr in dir(obj) if callable(getattr(obj, attr))],
+        'attributes': [attr for attr in dir(obj) if callable(getattr(obj, attr)) and attr.startswith('__')],
         'methods': [attr for attr in dir(obj) if callable(getattr(obj, attr)) and not attr.startswith('__')],
         'module': obj.__class__.__module__,
         'size': sys.getsizeof(obj) if hasattr(obj, 'sizeof') else 'No sizeof method',
