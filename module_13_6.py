@@ -37,9 +37,8 @@ class UserState(StatesGroup):
 
 def register_handlers(dp: Dispatcher):
     @dp.message(TextFilter('Рассчитать'))
-    async def set_age(message: types.Message, state: FSMContext):
+    async def option(message: types.Message):
         await message.answer('Выбери опцию:', reply_markup=inline_kb)
-        await state.set_state(UserState.age)
 
     @dp.callback_query(lambda call: call.data == 'count')
     async def inform(call: types.CallbackQuery, state: FSMContext):
@@ -71,13 +70,13 @@ def register_handlers(dp: Dispatcher):
         await message.answer('Привет! Я бот помогающий твоему здоровью.', reply_markup=kb)
 
     @dp.message(TextFilter('Информация'))
-    async def set_age(message: types.Message):
+    async def info(message: types.Message):
         await message.answer('Этот бот поможет вам узнать свою суточную норму калорий, '
                              'согласно упрощенной формуле Миффлина - Сан-Жеора. '
                              'Нажмите "Рассчитать", а затем следуйте инструкциям бота.')
 
     @dp.callback_query(lambda call: call.data == 'formula')
-    async def inform(call: types.CallbackQuery):
+    async def formula(call: types.CallbackQuery):
         await call.message.answer('10 х вес (кг) + 6,25 x рост (см) – 5 х возраст (г) + 5')
         await call.answer()
 
