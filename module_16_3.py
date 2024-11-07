@@ -22,7 +22,7 @@ async def add_user(
 
 @app.put('/user/{user_id}/{username}/{age}')
 async def update_user(
-        user_id: Annotated[int, Path(ge=1, le=int(max(users, key=int)), description='Enter User ID', example='1')],
+        user_id: Annotated[int, Path(ge=1, le=100, description='Enter User ID', example='1')],
         username: Annotated[str, Path(min_length=5, max_length=20, description='Enter Username', example='UrbanProfi')],
         age: Annotated[int, Path(ge=18, le=120, description='Enter age', example='28')]):
     users[user_id] = f"Имя: {username}, возраст: {age}"
